@@ -23,7 +23,7 @@ plugins {
 sourceCompatibility = 1.8
 
 group = 'com.github.frapontillo'
-version = '0.0.1'
+version = '0.0.2'
 
 mainClassName = 'com.github.frapontillo.pulse.cli.Blade'
 
