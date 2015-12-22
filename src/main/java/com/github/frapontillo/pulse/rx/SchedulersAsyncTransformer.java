@@ -29,7 +29,7 @@ import rx.schedulers.Schedulers;
  *
  * @author Francesco Pontillo
  */
-public class BackpressureAsyncTransformer<T> implements Observable.Transformer<T, T> {
+public class SchedulersAsyncTransformer<T> implements Observable.Transformer<T, T> {
     @Override public Observable<T> call(Observable<T> rObservable) {
         return rObservable
                 // don't block waiting on the work in downstream schedulers before generating and

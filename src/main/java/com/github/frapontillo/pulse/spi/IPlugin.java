@@ -16,7 +16,7 @@
 
 package com.github.frapontillo.pulse.spi;
 
-import com.github.frapontillo.pulse.rx.BackpressureAsyncTransformer;
+import com.github.frapontillo.pulse.rx.SchedulersAsyncTransformer;
 import com.google.gson.JsonElement;
 import rx.Observable;
 
@@ -54,7 +54,7 @@ import java.util.*;
  * override {@link #processSingle(Parameter, Observable)}. If you override this method, keep in
  * mind that the default implementation first applies the result of the {@link
  * #transform(Parameter)} method, then composes the stream with a {@link
- * BackpressureAsyncTransformer}.</li>
+ * SchedulersAsyncTransformer}.</li>
  * <li>If you
  * want to handle more than one input stream, you can override the {@link
  * #processMulti(IPluginConfig, Observable[])} method and handle the input {@link Observable}s
@@ -217,7 +217,7 @@ public abstract class IPlugin<Input, Output extends Object, Parameter extends IP
     public Observable<Output> processSingle(Parameter params, Observable<Input> stream) {
         if (stream != null) {
             return stream.compose(this.transform(params))
-                         .compose(new BackpressureAsyncTransformer<>());
+                         .compose(new SchedulersAsyncTransformer<>());
         }
         return null;
     }
