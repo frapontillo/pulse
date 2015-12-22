@@ -52,7 +52,7 @@ public class PluginProvider {
             String name) throws ClassNotFoundException {
         for (IPlugin implementation : serviceLoader) {
             if (implementation.getName().equals(name)) {
-                return (Plugin) implementation;
+                return (Plugin) implementation.getInstance();
             }
         }
         throw new ClassNotFoundException(

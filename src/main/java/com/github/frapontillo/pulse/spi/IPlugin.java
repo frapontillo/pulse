@@ -21,10 +21,7 @@ import com.google.gson.JsonElement;
 import rx.Observable;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.nio.file.*;
 import java.util.*;
 
 /**
@@ -122,6 +119,13 @@ public abstract class IPlugin<Input, Output extends Object, Parameter extends IP
      * @return The name of the plugin implementation.
      */
     public abstract String getName();
+
+    /**
+     * Get a new instance of the same plugin.
+     *
+     * @return An instance of the same class.
+     */
+    public abstract IPlugin<Input, Output, Parameter> getInstance();
 
     /**
      * Build a new empty {@link Parameter} configuration object.
